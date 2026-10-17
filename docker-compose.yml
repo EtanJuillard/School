@@ -1,0 +1,21 @@
+services:
+  demo:
+    image: debian:stable-slim
+    command: ["sleep", "infinity"]
+
+    read_only: true
+
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=32m,mode=1777
+
+    user: "1000:1000"
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
+
+    mem_limit: 100m
+    memswap_limit: 100m
+    pids_limit: 64
